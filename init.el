@@ -23,6 +23,13 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq mouse-yank-at-point t)
 
+(global-set-key (kbd "C-\\") #'helm-imenu-anywhere)
+
+(setq fiplr-root-markers '(".git" ".svn"))
+(setq fiplr-ignored-globs '((directories (".git" ".svn"))
+                            (files ("*.jpg" "*.png" "*.zip" "*~"))))
+(global-set-key (kbd "C-x f") 'fiplr-find-file)
+
 (avy-setup-default)
 (global-set-key (kbd "M-g a") 'avy-goto-char)
 (global-set-key (kbd "M-g l") 'avy-goto-line)
@@ -62,7 +69,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company diff-hl ivy swiper counsel avy molokai-theme))))
+    (helm imenu-anywhere fiplr company diff-hl ivy swiper counsel avy molokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
