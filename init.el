@@ -31,8 +31,8 @@
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 
 (avy-setup-default)
-(global-set-key (kbd "M-g a") 'avy-goto-char)
-(global-set-key (kbd "M-g l") 'avy-goto-line)
+(global-set-key (kbd "M-s a") 'avy-goto-char)
+(global-set-key (kbd "M-s l") 'avy-goto-line)
 
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
