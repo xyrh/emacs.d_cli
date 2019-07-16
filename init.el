@@ -2,7 +2,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
 (menu-bar-mode -1)
 (global-linum-mode t)
 (setq inhibit-splash-screen t)
@@ -73,16 +72,10 @@
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 (load-theme 'molokai t)
 
-(autoload 'gtags-mode "gtags" "" t)
-(add-hook 'gtags-select-mode-hook
-          '(lambda ()
-             (setq hl-line-face 'underline)
-             (hl-line-mode 1)))
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (gtags-mode 1)))
-(setq gtags-suggested-key-mapping t)
-(setq gtags-auto-update t)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode)
+              (ggtags-mode 1))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -94,7 +87,7 @@
     ("0cd56f8cd78d12fc6ead32915e1c4963ba2039890700458c13e12038ec40f6f5" "73a13a70fd111a6cd47f3d4be2260b1e4b717dbf635a9caee6442c949fad41cd" "3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
  '(package-selected-packages
    (quote
-    (flycheck youdao-dictionary ace-window helm imenu-anywhere fiplr company diff-hl ivy swiper counsel avy molokai-theme))))
+    (ggtags flycheck youdao-dictionary ace-window helm imenu-anywhere fiplr company diff-hl ivy swiper counsel avy molokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
