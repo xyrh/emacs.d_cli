@@ -21,6 +21,8 @@
 (setq-default c-basic-offset 4
 	      tab-width 4
 	      indent-tabs-mode nil)
+(global-set-key (kbd "TAB") 'self-insert-command)
+(setq backward-delete-char-untabify-method 'hungry)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq mouse-yank-at-point t)
