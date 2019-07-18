@@ -22,12 +22,16 @@
 (global-set-key (kbd "TAB") 'self-insert-command)
 (setq backward-delete-char-untabify-method 'hungry)
 
+(setq split-width-threshold 0)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq mouse-yank-at-point t)
 (setq ring-bell-function 'ignore)
 
 (global-set-key (kbd "C-a") 'mwim-beginning)
 (global-set-key (kbd "C-e") 'mwim-end)
+
+(require 'expand-region)
 
 (defun show-buffer-file-name ()
   (interactive)
@@ -37,6 +41,10 @@
           (message file-name)
           (kill-new file-name)))))
 (global-set-key (kbd "C-c C-f") 'show-buffer-file-name)
+
+(put 'dired-find-alternate-file 'disabled nil)
+(with-eval-after-load 'dired
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
 (setq url-automatic-caching t)
 (global-set-key (kbd "C-c i") 'youdao-dictionary-search-from-input)
@@ -95,7 +103,7 @@
     ("0cd56f8cd78d12fc6ead32915e1c4963ba2039890700458c13e12038ec40f6f5" "73a13a70fd111a6cd47f3d4be2260b1e4b717dbf635a9caee6442c949fad41cd" "3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
  '(package-selected-packages
    (quote
-    (mwim highlight-symbol neotree ggtags flycheck youdao-dictionary ace-window helm imenu-anywhere fiplr company ivy swiper counsel avy molokai-theme))))
+    (expand-region mwim highlight-symbol neotree ggtags flycheck youdao-dictionary ace-window helm imenu-anywhere fiplr company ivy swiper counsel avy molokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
