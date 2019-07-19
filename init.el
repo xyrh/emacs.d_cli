@@ -2,12 +2,16 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-(menu-bar-mode -1)
+(if (fboundp 'tool-bar-mode)	(tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode)	(menu-bar-mode -1))
+(if (fboundp 'scroll-bar-mode)	(scroll-bar-mode -1))
+
 (global-linum-mode t)
 (setq inhibit-splash-screen t)
 (setq auto-save-default nil)
 (setq make-backup-files nil)
 (xterm-mouse-mode t)
+(save-place-mode 1)
 
 (electric-pair-mode t)
 (show-paren-mode t)
