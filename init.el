@@ -10,7 +10,7 @@
 (setq inhibit-splash-screen t)
 (setq auto-save-default nil)
 (setq make-backup-files nil)
-(xterm-mouse-mode t)
+;(xterm-mouse-mode nil)
 (save-place-mode 1)
 
 (electric-pair-mode t)
